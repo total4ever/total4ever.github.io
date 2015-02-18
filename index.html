@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html ng-app='BaseConvert'>
+<head>
+    <title>Base Calculator</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+</head>
+<body>
+
+<div ng-controller='ConvertCtrl' style='max-width: 500px;margin-top:5em;margin-left:auto;margin-right:auto;'>
+    <div class='page-header'>
+        <h1>Base calculator</h1>
+        <h3>Paul Pivaru</h3>
+    </div>
+    <div class="panel panel-warning">
+        <div class="panel-heading"><span class='glyphicon glyphicon-question-sign' style='padding-right:10px;'></span>How
+            to use?
+        </div>
+        <div class="panel-body">
+            <h4>Expression for operations</h4>
+
+            <p><code><var>x</var>(<var>base for x</var>) [<var>+ - * /</var>] y(<var>base for y</var>) = ? (<var>base
+                for result</var>)</code></p>
+
+            <p><b>For example</b></p>
+
+            <p>
+                <kbd>137(8) + 1f(16) = ?(7)</kbd><br>
+                Will convert both of the numbers to base <b>7</b>, add them and then display the result.
+            </p>
+            <br><br>
+            <h4>Expression for conversions</h4>
+
+            <p><code><var>x</var>(<var>base for x</var>) = ? (<var>base
+                for result</var>)</code></p>
+
+            <p><b>For example</b></p>
+
+            <p>
+                <kbd>123(4)= ?(5)</kbd><br>
+                Will convert 123 from base <b>4</b> to base <b>5</b> and display the result.
+            </p>
+        </div>
+    </div>
+    <form ng-submit='processStuff()'>
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model='input' spellcheck='false'>
+      <span class="input-group-btn">
+        <button role='submit' class="btn btn-default" type="button" ng-click='processStuff()'>Calculate</button>
+      </span>
+        </div>
+    </form>
+    <br><br>
+
+    <div ng-repeat='alert in alerts' class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'
+                                                                      style='padding-right:20px;'></span>{{alert}}
+    </div>
+    <br><br>
+
+    <div class="panel panel-primary" ng-show="result_type == 1">
+        <div class="panel-heading"><span class='glyphicon glyphicon-certificate' style='padding-right:10px;'></span>Result
+        </div>
+        <div class="panel-body">
+            <h4>Conversions</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td class='mono'>{{acfrom}}<sub>({{acbase}})</sub></td>
+                    <td style='padding-left:10px;padding-right:10px;'><span
+                            class='glyphicon glyphicon-arrow-right'></span></td>
+                    <td class='mono'>{{afnl}}<sub>({{basefnl}})</sub></td>
+                </tr>
+                <tr>
+                    <td class='mono'>{{bcfrom}}<sub>({{bcbase}})</sub></td>
+                    <td style='padding-left:10px;padding-right:10px;'><span
+                            class='glyphicon glyphicon-arrow-right'></span></td>
+                    <td class='mono'>{{bfnl}}<sub>({{basefnl}})</sub></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class='op-table'>
+                <tr>
+                    <td>{{afnl}}</td>
+                    <td class='sign'>{{sign}}</td>
+                </tr>
+                <tr>
+                    <td>{{bfnl}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class='result'>{{result}}<br><span ng-show="remainder"><span style='font-size:0.5em;'>Remainder</span> {{remainder}}</span></td>
+                    <td valign='top'><sub>({{basefnl}})</sub></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-primary" ng-show="result_type == 2">
+        <div class="panel-heading"><span class='glyphicon glyphicon-certificate' style='padding-right:10px;'></span>Result
+        </div>
+        <div class="panel-body">
+            <h4>Conversions</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td class='mono'>{{acfrom}}<sub>({{acbase}})</sub></td>
+                    <td style='padding-left:10px;padding-right:10px;'><span
+                            class='glyphicon glyphicon-arrow-right'></span></td>
+                    <td class='mono'>{{result}}<sub>({{basefnl}})</sub></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

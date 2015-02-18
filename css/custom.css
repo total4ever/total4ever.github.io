@@ -1,0 +1,26 @@
+.op-table {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.op-table>tbody>tr>td {
+    font-size:1.5em;
+    font-family:monospace;
+    text-align:right;
+}
+
+.op-table .sign {
+    padding-left:10px;
+    font-weight:bold;
+    font-size:2em;
+    text-align:left;
+}
+
+.op-table .result {
+    border-top:solid 1px #000;
+}
+
+.mono {
+    font-family:monospace;
+    font-size:1.3em;
+}
